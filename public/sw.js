@@ -37,7 +37,7 @@ self.addEventListener("push", (event) => {
   const kind = pushKind(String(message.tag));
   const receipt = logPush("push_received", "received", kind);
   const display = self.registration.showNotification(String(message.title).slice(0, 100), {
-    body: String(message.body).slice(0, 240), icon: "/nest-icon-192.png?v=house-heart", tag: String(message.tag).slice(0, 100), data: { url: message.url === "/?view=shopping" ? "/?view=shopping" : "/?view=tasks" },
+    body: String(message.body).slice(0, 240), icon: "/nest-icon-192.png?v=nuzzle-green-1", tag: String(message.tag).slice(0, 100), data: { url: message.url === "/?view=shopping" ? "/?view=shopping" : "/?view=tasks" },
   }).then(() => logPush("notification_shown", "success", kind), () => logPush("notification_failed", "error", kind));
   event.waitUntil(Promise.all([receipt, display]));
 });
