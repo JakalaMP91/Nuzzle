@@ -649,7 +649,7 @@ button, input, textarea { font: inherit; } button { cursor: pointer; }
   .shopping-item .item-copy p, .shopping-item .item-detail { min-height: 2.5em; margin-top: 4px; overflow: hidden; font-size: .67rem; line-height: 1.25; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
   .recipe-source { display: none; } .fab { right: 16px; bottom: calc(86px + env(safe-area-inset-bottom)); }
   .undo-toast { left: 14px; right: 14px; bottom: calc(148px + env(safe-area-inset-bottom)); min-width: 0; transform: none; }
-  .bottom-nav { position: fixed; inset: auto 0 0; z-index: 25; height: calc(72px + env(safe-area-inset-bottom)); display: grid; grid-template-columns: repeat(4, 1fr); padding: 7px 10px calc(9px + env(safe-area-inset-bottom)); border-top: 1px solid #e0dde7; background: #fbfaffee; backdrop-filter: blur(18px); }
+  .bottom-nav { position: fixed; inset: auto 0 0; z-index: 25; height: calc(72px + env(safe-area-inset-bottom)); display: grid; grid-template-columns: repeat(5, 1fr); padding: 7px 10px calc(9px + env(safe-area-inset-bottom)); border-top: 1px solid #e0dde7; background: #fbfaffee; backdrop-filter: blur(18px); }
   .bottom-nav button { display: grid; place-items: center; gap: 1px; border: 0; border-radius: 13px; background: transparent; color: #898591; font-size: .7rem; }
   .bottom-nav button svg { width: 21px; } .bottom-nav button.active { background: #efecff; color: #5740ce; font-weight: 700; }
   .bottom-nav button:disabled { opacity: .45; }
@@ -941,3 +941,99 @@ h1, h2, h3, .item-title-row, .home-tile-copy, .today-task-main, .recipe-copy, .t
 /* Gleichmäßig verteilte Aufgabenaktionen */
 .task-sheet-footer > button { flex: 1 1 0; min-width: 0; margin: 0 !important; }
 @media (max-width: 420px) { .task-sheet-footer > button { padding-inline: 5px; gap: 4px; } .task-sheet-footer > button svg { width: 16px; height: 16px; flex-shrink: 0; } }
+/* Kaffee: Kacheln wie im Tracker, gestaltet mit den Nuzzle-Bausteinen. */
+.coffee-area { width: calc(100% - clamp(32px, 4vw, 72px)); margin: 0 auto; padding-top: 54px; }
+.coffee-add { border-radius: 14px; }
+.coffee-group + .coffee-group { margin-top: 38px; }
+.coffee-group-heading { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; }
+.coffee-group-heading h2 { margin: 0; font-size: 1.13rem; font-weight: 730; letter-spacing: -.02em; }
+.coffee-group-heading > span { min-width: 25px; padding: 3px 8px; border-radius: 99px; background: #ece9f5; color: #746b89; font-size: .75rem; text-align: center; }
+.coffee-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(205px, 1fr)); gap: 14px; }
+.coffee-card { min-width: 0; overflow: hidden; border: 1px solid var(--nest-card-border); border-radius: 24px; background: var(--nest-card-gradient); box-shadow: var(--nest-card-shadow); }
+.coffee-card:hover { border-color: #b8abe8; box-shadow: 0 18px 40px #33294b1a; }
+.coffee-card.is-unavailable { opacity: .74; }
+.coffee-card-main { display: block; width: 100%; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; }
+.coffee-card-main:focus-visible { outline: 3px solid var(--ring); outline-offset: -3px; }
+.coffee-photo { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 1.45; overflow: hidden; background: linear-gradient(135deg, #eeeafa, #e4ddf5); color: #9d90c4; }
+.coffee-photo > svg { width: 42px; height: 42px; }
+.coffee-photo img { width: 100%; height: 100%; object-fit: cover; }
+.coffee-decaf { position: absolute; top: 10px; right: 10px; padding: 4px 9px; border-radius: 99px; background: #fff; color: #67558f; font-size: .72rem; font-weight: 700; }
+.coffee-card-body { min-width: 0; display: grid; gap: 10px; padding: 16px 16px 10px; }
+.coffee-card-body > strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 1.06rem; letter-spacing: -.02em; }
+.coffee-values { display: flex; flex-wrap: wrap; gap: 6px; }
+.coffee-values span { padding: 5px 8px; border-radius: 9px; background: #efecf8; color: #746b86; font-size: .72rem; }
+.coffee-values b { color: #51466d; }
+.coffee-stars { display: inline-flex; gap: 3px; color: #d7a02b; }
+.coffee-stars svg { width: 15px; height: 15px; }
+.coffee-profile-picker { display: block; padding: 0 16px 16px; }
+.coffee-profile-picker select { width: 100%; border: 1px solid #e3dfee; border-radius: 10px; padding: 8px 9px; background: #fff; color: #645b74; font-size: .82rem; }
+.coffee-profile-picker select:disabled { opacity: 1; appearance: none; }
+.coffee-notice { color: #796d84; }
+.coffee-overlay { position: fixed; inset: 0; z-index: 100; display: flex; justify-content: flex-end; background: #201b2a80; }
+.coffee-dialog { width: min(680px, 100%); height: 100%; display: flex; flex-direction: column; background: #f9f8fc; box-shadow: -14px 0 50px #241d3424; }
+.coffee-dialog-header { flex: 0 0 auto; display: flex; align-items: center; gap: 10px; min-height: 72px; padding: 12px 22px; border-bottom: 1px solid #e8e4ef; background: #fff; }
+.coffee-dialog-header > span { color: #81778e; font-size: .75rem; font-weight: 750; letter-spacing: .09em; }
+.coffee-dialog-header > h2 { flex: 1; margin: 0; font-size: 1.2rem; }
+.coffee-header-actions { display: flex; gap: 3px; margin-left: auto; }
+.coffee-danger { color: #b33b4b; }
+.coffee-dialog-content { flex: 1; min-height: 0; overflow-y: auto; padding: 28px; }
+.coffee-detail-intro { display: flex; align-items: center; gap: 22px; margin-bottom: 26px; }
+.coffee-detail-photo { flex: 0 0 136px; width: 136px; aspect-ratio: 1; display: grid; place-items: center; overflow: hidden; border-radius: 22px; background: #ece8f7; color: #a297bd; }
+.coffee-detail-photo > svg { width: 40px; height: 40px; }
+.coffee-detail-photo img { width: 100%; height: 100%; object-fit: cover; }
+.coffee-detail-intro h2 { margin: 0; overflow-wrap: anywhere; font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.1; letter-spacing: -.04em; }
+.coffee-detail-intro div > p:last-child { margin: 7px 0 0; color: #7b7384; }
+.coffee-detail-profiles { display: grid; gap: 14px; }
+.coffee-profile { min-width: 0; margin: 0; padding: 20px; border: 1px solid #e5dfef; border-radius: 20px; background: #fff; }
+.coffee-profile-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.coffee-profile-heading .eyebrow { margin-bottom: 4px; }
+.coffee-profile-heading h3 { margin: 0; overflow-wrap: anywhere; font-size: 1.08rem; }
+.coffee-detail-values { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 18px 0 0; }
+.coffee-detail-values div { padding: 11px 13px; border-radius: 12px; background: #f6f4fb; }
+.coffee-detail-values dt, .coffee-detail-note strong { color: #857b90; font-size: .75rem; font-weight: 650; }
+.coffee-detail-values dd { margin: 3px 0 0; overflow-wrap: anywhere; font-weight: 700; }
+.coffee-detail-note { margin-top: 15px; }
+.coffee-detail-note p { margin: 4px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; color: #4c4554; line-height: 1.5; }
+.coffee-form { display: grid; align-content: start; justify-items: start; gap: 18px; }
+.coffee-form-grid { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.coffee-field { min-width: 0; display: grid; align-content: start; gap: 6px; color: #5d5469; font-size: .85rem; font-weight: 650; }
+.coffee-wide { grid-column: 1 / -1; }
+.coffee-field input, .coffee-field select, .coffee-settings input:not([type=file]), .coffee-settings select { min-width: 0; width: 100%; padding: 10px 12px; border: 1px solid #dedbe7; border-radius: 11px; background: #fff; color: #292631; }
+.coffee-check { display: flex; align-items: center; gap: 8px; align-self: end; min-height: 42px; color: #5d5469; font-size: .88rem; }
+.coffee-photo-edit { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.coffee-photo-edit > div { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.coffee-edit-image { width: 120px; height: 120px; object-fit: cover; border-radius: 14px; }
+.coffee-dialog-footer { flex: 0 0 auto; display: flex; justify-content: flex-end; gap: 10px; padding: 16px 22px; border-top: 1px solid #e8e4ef; background: #fff; }
+.coffee-panel { width: 100%; display: grid; gap: 10px; padding: 16px; border: 1px solid #e5dfef; border-radius: 16px; background: #fff; }
+.coffee-panel label { display: grid; gap: 4px; }
+.coffee-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0; }
+.coffee-settings-target { width: 100%; }
+.coffee-settings { padding-top: 16px; border-top: 1px solid #ece8f1; }
+.coffee-settings h3 { margin: 0 0 6px; font-weight: 700; }
+.coffee-settings p { margin: 7px 0; }
+.coffee-upload { position: relative; display: inline-flex; align-items: center; min-height: 36px; padding: 7px 12px; overflow: hidden; border: 1px solid var(--border); border-radius: 8px; background: var(--background); color: var(--foreground); font-size: .875rem; font-weight: 500; cursor: pointer; }
+.coffee-upload:focus-within { outline: 3px solid #7661e580; }
+.coffee-upload span { display: inline-flex; align-items: center; gap: 8px; }
+.coffee-upload svg { width: 16px; height: 16px; }
+.coffee-upload input { position: absolute; inset: 0; width: 100%; opacity: 0; cursor: pointer; }
+.coffee-upload:has(input:disabled) { opacity: .5; }
+.coffee-import-preview { margin-top: 14px; padding: 16px; border-radius: 14px; background: #f5f3fb; }
+.coffee-import-preview h4 { font-weight: 700; }
+.coffee-names { margin-top: 16px; color: #5d5469; }
+.coffee-names summary { cursor: pointer; font-size: .9rem; font-weight: 650; }
+.coffee-name-row { display: flex; align-items: center; gap: 4px; }
+.coffee-name-row span { flex: 1; overflow-wrap: anywhere; }
+@media (max-width: 680px) {
+  .coffee-area { width: calc(100% - 28px); padding-top: 30px; }
+  .coffee-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .coffee-card { border-radius: 18px; }
+  .coffee-card-body { padding: 12px 12px 9px; }
+  .coffee-profile-picker { padding: 0 12px 12px; }
+  .coffee-dialog-header { min-height: 62px; padding-inline: 14px; }
+  .coffee-dialog-content { padding: 20px 16px; }
+  .coffee-detail-photo { flex-basis: 96px; width: 96px; border-radius: 17px; }
+  .coffee-detail-intro { gap: 15px; }
+}
+@media (max-width: 350px) { .coffee-grid { grid-template-columns: 1fr; } }
+
+.coffee-settings-fields { min-width: 0; margin: 0; padding: 0; border: 0; }

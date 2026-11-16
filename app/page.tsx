@@ -43,8 +43,10 @@ import { reminderOptions, taskDueAt, taskReminderState } from "@/lib/task-remind
 import { usePushNotifications } from "@/lib/use-push-notifications";
 import { sortRecipes, unfamiliarRecipeIds, type RecipeSort } from "@/lib/recipe-library";
 import { scaleIngredientDetail, stepIngredientDetail } from "@/lib/recipe-step-amounts";
+import { CoffeeArea } from "@/components/coffee-area";
+import { Coffee as CoffeeIcon } from "lucide-react";
 
-type View = "home" | "shopping" | "recipes" | "tasks" | "settings";
+type View = "home" | "shopping" | "recipes" | "tasks" | "settings" | "coffee";
 type RecipeIcon = "bread" | "pot" | "cake";
 type RecipeSource = "images" | "pdf" | "text" | "manual";
 type ShoppingItem = {
@@ -352,6 +354,7 @@ function AppNav({ view, setView, counts }: { view: View; setView: (view: View) =
         <button className={`rail-link ${view === "shopping" ? "rail-link--active" : ""}`} onClick={() => setView("shopping")} type="button"><ShoppingBasket /><span>Einkaufen</span>{badge("shopping")}</button>
         <button className={`rail-link ${view === "recipes" ? "rail-link--active" : ""}`} onClick={() => setView("recipes")} type="button"><BookOpen /><span>Rezepte</span>{badge("recipes")}</button>
         <button className={`rail-link ${view === "tasks" ? "rail-link--active" : ""}`} onClick={() => setView("tasks")} type="button"><ClipboardCheck /><span>Aufgaben</span>{badge("tasks")}</button>
+        <button className={`rail-link ${view === "coffee" ? "rail-link--active" : ""}`} onClick={() => setView("coffee")} type="button"><CoffeeIcon /><span>Kaffee</span></button>
       </nav>
     </aside>
     <nav className="bottom-nav" aria-label="Mobile Navigation">
@@ -359,11 +362,14 @@ function AppNav({ view, setView, counts }: { view: View; setView: (view: View) =
       <button className={view === "shopping" ? "active" : ""} onClick={() => setView("shopping")} type="button"><ShoppingBasket /><span>Einkaufen</span>{badge("shopping")}</button>
       <button className={view === "recipes" ? "active" : ""} onClick={() => setView("recipes")} type="button"><BookOpen /><span>Rezepte</span>{badge("recipes")}</button>
       <button className={view === "tasks" ? "active" : ""} onClick={() => setView("tasks")} type="button"><ClipboardCheck /><span>Aufgaben</span>{badge("tasks")}</button>
+      <button className={view === "coffee" ? "active" : ""} onClick={() => setView("coffee")} type="button"><CoffeeIcon /><span>Kaffee</span></button>
     </nav>
   </>;
 }
 
 export default function Home() {
+  const [coffeeSettingsTarget, setCoffeeSettingsTarget] = useState<HTMLDivElement | null>(null);
+  const [coffeeSync, setCoffeeSync] = useState<"checking" | "synced" | "saving" | "error">("checking");
   const [view, setView] = useState<View>("home");
   const [items, setItems] = useState(initialItems);
   const [recent, setRecent] = useState(seedRecent);
@@ -617,7 +623,7 @@ export default function Home() {
     setRecipes((current) => applyImageReplacements(current, before.recipes, after.recipes) as Recipe[]);
     setTasks((current) => applyTaskImageReplacements(current, before.tasks, after.tasks) as HouseholdTask[]);
   }, taskDialog || itemDialog || laneDialog || categoryDialog || recipeEditor || shoppingDialog || pantryDialog, (base, local, remote, author) => { notices.receive(base, local, remote, author); if (view === "shopping") notices.markShoppingSeen(); });
-  useEffect(() => { if (ready && view !== "home" && view !== "settings") notices.acknowledge(view); }, [ready, view, notices.acknowledge]);
+  useEffect(() => { if (ready && (view === "shopping" || view === "recipes" || view === "tasks")) notices.acknowledge(view); }, [ready, view, notices.acknowledge]);
   useEffect(() => { if (!ready) return; if (view === "shopping" && lastNoticeView.current !== "shopping") notices.visitShopping(); lastNoticeView.current = view; }, [ready, view, notices.visitShopping]);
   useEffect(() => { if (ready) void sync.refresh(); }, [ready, view, selectedRecipeId, sync.refresh]);
   function downloadSyncLog() {
@@ -1228,14 +1234,15 @@ export default function Home() {
   if (!ready) return <main className="app-boot" role="status" aria-label="Nuzzle wird geladen"><NuzzleLoadingMark /><span>Nuzzle</span></main>;
 
   return <ProductIconContext.Provider value={productIcons}><main className="app-shell">
-    <AppNav view={view} setView={(next) => { if (next !== "home" && next !== "settings") notices.acknowledge(next); setView(next); }} counts={{ shopping: notices.state.shopping.length, recipes: notices.state.recipes.length, tasks: notices.state.tasks.length }} />
+    <AppNav view={view} setView={(next) => { if (next === "shopping" || next === "recipes" || next === "tasks") notices.acknowledge(next); setView(next); }} counts={{ shopping: notices.state.shopping.length, recipes: notices.state.recipes.length, tasks: notices.state.tasks.length }} />
     <section className="main-surface">
       <header className="topbar">
         <button className="wordmark" onClick={() => setView("home")} type="button"><span className="wordmark-dot" />Nuzzle</button>
         {(view === "shopping" || view === "recipes") && <label className="search-box"><Search aria-hidden="true" /><input aria-label={view === "recipes" ? "Rezepte suchen" : "Einkaufsliste durchsuchen"} placeholder={view === "recipes" ? "Rezepte oder Zutaten suchen" : "Einkaufsliste durchsuchen"} value={query} onChange={(event) => setQueries((current) => ({ ...current, [view]: event.target.value }))} /></label>}
-        <button type="button" className={`account-button ${!sync.warning && (sync.phase === "synced" || sync.phase === "saving") ? "is-connected" : "is-disconnected"}`} onClick={() => setView("settings")} title={`${commentAuthor ?? "Konto"}: ${!sync.warning && (sync.phase === "synced" || sync.phase === "saving") ? "Sync verbunden" : "Sync nicht verbunden"}`} aria-label={`${commentAuthor ?? "Konto"}, ${!sync.warning && (sync.phase === "synced" || sync.phase === "saving") ? "Sync verbunden" : "Sync nicht verbunden"}. Einstellungen öffnen.`}>{commentAuthor ? commentAuthor.slice(0, 1).toUpperCase() : <CircleUserRound aria-hidden="true" />}</button>
+        <button type="button" className={`account-button ${!sync.warning && (sync.phase === "synced" || sync.phase === "saving") && (coffeeSync === "synced" || coffeeSync === "saving") ? "is-connected" : "is-disconnected"}`} onClick={() => setView("settings")} title={`${commentAuthor ?? "Konto"}: ${!sync.warning && (sync.phase === "synced" || sync.phase === "saving") && (coffeeSync === "synced" || coffeeSync === "saving") ? "Sync verbunden" : "Sync nicht verbunden"}`} aria-label={`${commentAuthor ?? "Konto"}, ${!sync.warning && (sync.phase === "synced" || sync.phase === "saving") && (coffeeSync === "synced" || coffeeSync === "saving") ? "Sync verbunden" : "Sync nicht verbunden"}. Einstellungen öffnen.`}>{commentAuthor ? commentAuthor.slice(0, 1).toUpperCase() : <CircleUserRound aria-hidden="true" />}</button>
       </header>
       {sync.warning && <div className="sync-warning" role="alert"><CircleAlert aria-hidden="true" /><span><strong>{sync.requiresLogin ? "Anmeldung erforderlich" : "Synchronisierung unterbrochen"}</strong><br />{sync.warning}</span><button type="button" onClick={() => sync.requiresLogin ? window.location.reload() : setView("settings")}>{sync.requiresLogin ? "Anmelden" : "Prüfen"}</button></div>}
+      <div hidden={view !== "coffee"}><CoffeeArea settingsTarget={coffeeSettingsTarget} onStatus={setCoffeeSync} /></div>
       {view === "settings" && <section className="settings-surface" aria-labelledby="settings-title">
         <div className="page-heading"><div><p className="eyebrow">Dein Nuzzle</p><h1 id="settings-title">Einstellungen</h1><p>Benachrichtigungen und gemeinsame Daten verwalten.</p></div></div>
         <button type="button" className="settings-back" onClick={() => setView("home")}><ArrowLeft /> Home</button>
@@ -1243,7 +1250,7 @@ export default function Home() {
         <div className="settings-card"><div className="push-settings"><div><strong><Bell aria-hidden="true" />Aufgaben-Erinnerungen</strong><p>{push.status === "checking" ? "Benachrichtigungen werden geprüft …" : push.status === "unavailable" ? "Status vorübergehend nicht prüfbar. Nuzzle versucht es erneut." : push.enabled ? "Auf diesem Gerät aktiviert. Termine gelten in deutscher Zeit." : "Lass dich vor dem Termin und bei Fälligkeit erinnern. Auf jedem Gerät separat aktivieren."}</p>{push.status !== "checking" && !push.supported && <p>Dieser Browser unterstützt Push hier nicht. Auf iPhone und iPad Nuzzle zuerst zum Home-Bildschirm hinzufügen.</p>}{push.status === "unavailable" && <p>Bitte Internetverbindung und Anmeldung prüfen. Eine bestehende Geräteanmeldung wird dadurch nicht gelöscht.</p>}{push.status !== "checking" && push.supported && !push.configured && <p>Benachrichtigungsdienst noch nicht verfügbar. Bitte Anmeldung und Verbindung prüfen.</p>}{push.message && <p role="status">{push.message}</p>}</div><div className="push-actions">{push.enabled ? <><Button variant="outline" disabled={push.busy} onClick={() => void push.test()}>Test senden</Button><Button variant="outline" disabled={push.busy} onClick={() => void push.disable()}>Deaktivieren</Button></> : push.status === "disabled" ? <Button variant="outline" disabled={push.busy || !push.supported || !push.configured} onClick={() => void push.enable()}>Benachrichtigungen aktivieren</Button> : null}</div></div></div>
         <div className="settings-card notification-options"><h2>Benachrichtigungen auf diesem Gerät</h2><label htmlFor="reminder-default-time">Uhrzeit für Aufgaben ohne Uhrzeit</label><input id="reminder-default-time" type="time" value={push.reminderTime} disabled={!push.enabled || push.busy} onChange={(event) => { if (event.target.value) void push.savePreferences(event.target.value, push.shoppingEnabled); }} /><label className="shopping-push-toggle"><input type="checkbox" checked={push.shoppingEnabled} disabled={!push.enabled || push.busy} onChange={(event) => void push.savePreferences(push.reminderTime, event.target.checked)} />Einkaufsbenachrichtigungen aktivieren</label><p>Für neue Artikel und Einkäufe der anderen Person. Nach fünf Minuten werden nur weiterhin gültige Änderungen gemeldet.</p>{push.status === "disabled" && <p>Aktiviere zuerst Benachrichtigungen auf diesem Gerät.</p>}<Button variant="outline" onClick={() => void push.downloadDiagnostics()}>Benachrichtigungsprotokoll herunterladen</Button><p>Enthält nur technische Ereignisse dieses Geräts, keine Aufgaben- oder Artikelnamen und keine Push-Zugangsdaten.</p></div>
         <div className="settings-card sync-settings">
-        <h2>Synchronisierung und Sicherung</h2><p>Teile Einkaufslisten, Aufgaben und Rezepte mit deinem Haushalt. Deine Ansichtseinstellungen bleiben auf diesem Gerät.</p>
+        <h2>Synchronisierung und Sicherung</h2><p>Teile Einkaufslisten, Aufgaben, Rezepte und Kaffee mit deinem Haushalt. Deine Ansichtseinstellungen bleiben auf diesem Gerät.</p>
         {(sync.phase === "local" || sync.phase === "error") && <><p>{sync.message || "Derzeit sind deine Daten nur auf diesem Gerät gespeichert."}</p>{sync.requiresLogin ? <Button onClick={() => window.location.reload()}>Erneut anmelden</Button> : <Button onClick={() => void sync.connect()}>Gemeinsamen Speicher verbinden</Button>}</>}
         {sync.phase === "checking" && <p role="status">Verbindung wird geprüft …</p>}
         {sync.phase === "choose" && <>{sync.remote?.data ? <><p>Es sind bereits gemeinsame Daten vorhanden. Beim Laden wird zunächst eine lokale Sicherung erstellt.</p><Button onClick={() => void sync.useCloud()}>Gemeinsame Daten laden</Button></> : <><p>Der gemeinsame Speicher ist leer. Du kannst die Daten dieses Geräts einmalig übernehmen. Daten aus der lokalen Vorschau lassen sich zuerst als Sicherungsdatei laden.</p><label className="sync-file">Sicherung von diesem Gerät laden<input type="file" accept="application/json,.json" onChange={(event) => { void loadLocalBackup(event.target.files?.[0]); event.target.value = ""; }} /></label><Button onClick={sync.importLocal}>Daten dieses Geräts übernehmen</Button></>}</>}
@@ -1252,6 +1259,7 @@ export default function Home() {
         <p>Das Sync-Protokoll bleibt auf diesem Gerät und enthält technische Ereignisse, keine Haushaltsdaten. Es umfasst höchstens die letzten 200 Einträge.</p>
         <Button variant="outline" onClick={downloadSyncLog}>Sync-Protokoll herunterladen</Button>
         <Button variant="outline" onClick={downloadLocalBackup}>Lokale Sicherung herunterladen</Button>
+        <div ref={setCoffeeSettingsTarget} className="coffee-settings-target" />
         </div><p className="app-version">Nuzzle · Version {appVersion}</p>
       </section>}
 

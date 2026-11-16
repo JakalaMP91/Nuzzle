@@ -1,8 +1,16 @@
 # Änderungen
 
-## Unveröffentlicht
+## 0.7.2 (vorbereitet)
 
-- Animierter Nuzzle-Ladebildschirm mit ruhiger Darstellung bei reduzierter Bewegung.
+- Neues Nuzzle-Icon, animierter Ladebildschirm und pro Gerät umschaltbares Farbschema.
+
+## 0.7.1
+
+- Kaffee-Übersicht, Details und Editor an das Nuzzle-Design angepasst. Sicherung und Synchronisierungsstatus stehen in den Einstellungen.
+
+## 0.7.0
+
+- Kaffee-Bereich mit Import aus dem Coffee Tracker, Profilen, Fotos und eigenem gemeinsamen Cloud-Datenstand ergänzt.
 
 ## 0.6.2
 

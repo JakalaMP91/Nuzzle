@@ -1,6 +1,8 @@
 # Deployment und Betrieb
 
-Stand: 16.11.2026. Version 0.6.2 wurde am 16.11.2026 mit dem App-Namen Nuzzle veröffentlicht. Cloudflare-Bindungen, Zugriffsschutz und Cron wurden geprüft. Die Darstellung und Push-Zustellung auf Geräten sind noch zu prüfen. Die konkrete Worker-Adresse und weitere lokale Betriebsangaben liegen in der ignorierten Datei `.nest-private/deployment-before-privacy.md`. Vor einem Deployment den aktuellen Produktionsstand und das Ziel prüfen.
+Version 0.7.1 wurde am 16.11.2026 veröffentlicht. Die Kaffee-Ansicht wurde überarbeitet; eine Datenbankmigration war nicht erforderlich. Nach der Aktivierung wurden Bindungen, Tabellen, Cron und Zugriffsschutz geprüft. Die neue Ansicht wurde lokal mit Beispieldaten geprüft; ein angemeldeter Test auf dem Tablet steht noch aus.
+
+Stand: 16.11.2026. Version 0.7.0 mit dem Kaffee-Bereich wurde veröffentlicht. Die additive Migration `drizzle/0005_coffee.sql` wurde nach Prüfung des Schemas und eines Wiederherstellungspunkts angewendet. Cloudflare-Bindungen, Zugriffsschutz, Tabellen und Cron wurden nach der Aktivierung geprüft. Der angemeldete Kaffee-Import und die Synchronisierung auf echten Geräten sind noch zu prüfen. Die konkrete Worker-Adresse und weitere lokale Betriebsangaben liegen in der ignorierten Datei `.nest-private/deployment-before-privacy.md`. Vor einem Deployment den aktuellen Produktionsstand und das Ziel prüfen.
 
 Die additive Migration `drizzle/0003_push_preferences.sql` wurde am 15.11.2026 auf der produktiven D1-Datenbank angewendet, nach Prüfung des Schemas und eines Wiederherstellungspunkts. Nicht erneut anwenden.
 

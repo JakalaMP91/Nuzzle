@@ -1,5 +1,13 @@
 # Nuzzle
 
+## Kaffee
+
+Die Übersicht zeigt vorhandene und nicht mehr vorhandene Sorten als Kacheln. Das Plus legt eine Sorte an, ein Klick auf eine Kachel öffnet die Details. Bei mehreren Profilen lässt sich das angezeigte Profil direkt auf der Kachel auswählen.
+
+Import, Export, Profilvorschläge und der Status der Kaffee-Synchronisierung liegen unter „Einstellungen → Synchronisierung und Sicherung“. Dort lässt sich ein JSON-Backup des Coffee Trackers prüfen und importieren. Bei gleichen IDs kann man vorhandene Kaffees behalten oder ersetzen. Die separate Kaffee-Sicherung enthält Fotos, die Haushalts-Sicherung enthält keine Kaffeedaten.
+
+Änderungen werden als lokaler IndexedDB-Entwurf gesichert und automatisch synchronisiert. Bei einem Konflikt bleibt der lokale Entwurf erhalten. Er kann in den Einstellungen exportiert werden, bevor der Cloudstand nach Bestätigung geladen wird. Fotos liegen im geschützten Bildspeicher. Für den ersten Abruf und die gemeinsame Speicherung sind Anmeldung und Verbindung nötig.
+
 ## Lokales Git
 
 Dieses Projektverzeichnis ist die maßgebliche Arbeitskopie für Weiterarbeit und Deployments. Es nutzt Git für die lokale Versionsverwaltung. Für parallele Codex- oder Claude-Code-Sitzungen vor Änderungen `git status` prüfen und Arbeiten an denselben Dateien abstimmen. Der Git-Index ist innerhalb einer Arbeitskopie gemeinsam: Vor einem Commit prüfen, welche Änderungen vorgemerkt sind, und keine fremden Änderungen ungeprüft committen. Für isolierte parallele Arbeit können separate Git-Worktrees verwendet werden. Git ersetzt keine separate Datensicherung.
@@ -11,7 +19,7 @@ Für Änderungen zuerst `AGENTS.md` und `docs/architektur.md` lesen. Der aktuell
 
 Lokale Vorschau einer Haushalts-App für Einkaufszettel, Rezepte und Aufgaben.
 Nach `npm ci` startet `npm run dev` die Vorschau auf `http://localhost:5173/`.
-Ohne eingerichteten gemeinsamen Speicher bleiben Eingaben lokal im Browser. Über „Lokal“ lassen sie sich als JSON-Datei sichern. Beim Neuladen erscheint die zuletzt gewählte Ansicht direkt nach einem kurzen Nuzzle-Startzustand; Home wird nicht mehr kurz eingeblendet. Das Ladesymbol zeigt zwei Bögen und ein Herz. Bei längerer Ladezeit schlägt das Herz sanft; bei reduzierter Bewegung bleibt das Symbol ruhig. Der Start wird für die Animation nicht künstlich verzögert. Die Detailseitenleisten öffnen mit einer kurzen Animation. Es ist kein privater GitHub-Account oder Remote erforderlich.
+Ohne eingerichteten gemeinsamen Speicher bleiben Eingaben lokal im Browser. Über „Lokal“ lassen sie sich als JSON-Datei sichern. Beim Neuladen erscheint die zuletzt gewählte Ansicht direkt nach einem kurzen animierten Nuzzle-Startzustand; Home wird nicht mehr kurz eingeblendet. Die Detailseitenleisten öffnen mit einer kurzen Animation. Es ist kein privater GitHub-Account oder Remote erforderlich.
 
 ## Einstellungen und Versionierung
 

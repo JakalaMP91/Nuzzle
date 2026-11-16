@@ -1,6 +1,6 @@
 # Architektur von Nuzzle
 
-Stand: 15.11.2026, veröffentlichte Version 0.6.0. Seit 16.11.2026 liegt die maßgebliche Arbeitskopie im privaten Projektverzeichnis; siehe `AGENTS.md`. Maßgeblich für Details ist der aktuelle Quellcode.
+Stand: 16.11.2026, veröffentlichte Version 0.7.1. Seit 16.11.2026 liegt die maßgebliche Arbeitskopie im privaten Projektverzeichnis; siehe `AGENTS.md`. Maßgeblich für Details ist der aktuelle Quellcode.
 
 ## Überblick
 
@@ -19,6 +19,8 @@ Browser/PWA ── lokale Daten und Geräteeinstellungen
 Die App kann lokal ohne gemeinsamen Speicher genutzt werden. `nest-local-v1` enthält Daten und UI-Zustand im Browser. Ein Teil des UI-Zustands, Hinweise und Lesestatus sind gerätespezifisch. Eine JSON-Sicherung enthält Haushaltsdaten einschließlich Bildern. Unterschiedliche Ursprünge teilen ihren Browserspeicher nicht.
 
 ## Gemeinsame Daten und Konflikte
+
+Kaffee nutzt einen eigenen Datensatz in `coffee_collection` und eine eigene Revision. `app/api/coffee/` prüft Anmeldung, Ursprung und Revision. Das schützt ältere Clients, deren Haushaltsformat keine Kaffee-Felder kennt. Fotos nutzen den bestehenden Bild-Endpunkt. Die Kaffee-Ansicht nutzt Kacheln und separate Detail- und Editoransichten; Sicherung und Kaffee-Synchronisierungsstatus erscheinen in den Einstellungen. Der Kontostatus berücksichtigt auch Fehler der Kaffee-Synchronisierung. `components/coffee-area.tsx` speichert nicht übertragene Änderungen in IndexedDB und bietet einen separaten JSON-Export; die bestehende Haushalts-Sicherung enthält keine Kaffee-Daten. Die additive Migration `0005_coffee.sql` wurde am 16.11.2026 auf Produktion angewendet und darf nicht erneut angewendet werden.
 
 `lib/household-data.ts` definiert und validiert den gemeinsamen Datensatz. `lib/use-household-sync.ts` verwaltet Verbindung, Revision, lokalen gemeinsamen Ausgangsstand, verzögertes Speichern und Abruf. `lib/household-service.ts` und `app/api/household/route.ts` bedienen die API. D1 speichert den Haushaltsdatensatz mit Revision; konkurrierende Schreibzugriffe werden erkannt. `lib/household-merge.ts` führt geeignete unabhängige Änderungen anhand des gemeinsamen Ausgangsstands zusammen. Einkaufsdaten und Rezepte werden getrennt betrachtet. Gleichzeitige reine Ergänzungen im Einkaufsbereich können anhand stabiler IDs zusammengeführt werden; Änderungen, Löschungen oder widersprüchliche Reihenfolgen bleiben dort bei gleichzeitiger Bearbeitung geschützt. Das Sync-Protokoll kann den Konfliktbereich ohne Inhalte benennen. Bei nicht auflösbaren Konflikten bleiben lokale Änderungen erhalten; vor dem Ersetzen wird gesichert und bestätigt. Beim offenen Editor wird das Übernehmen fremder Daten ausgesetzt.
 

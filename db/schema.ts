@@ -13,3 +13,10 @@ export const householdImage = sqliteTable("household_image", {
   content: text("content").notNull(),
   createdAt: integer("created_at").notNull(),
 });
+
+export const coffeeCollection = sqliteTable("coffee_collection", {
+  id: integer("id").primaryKey(),
+  revision: integer("revision").notNull(),
+  data: text("data").notNull(),
+  updatedAt: integer("updated_at").notNull(),
+});
