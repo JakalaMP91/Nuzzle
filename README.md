@@ -15,6 +15,8 @@ Ohne eingerichteten gemeinsamen Speicher bleiben Eingaben lokal im Browser. Übe
 
 ## Einstellungen und Versionierung
 
+Unter „Farbschema“ kann auf diesem Gerät zwischen Nuzzle Grün und dem bisherigen Violett gewechselt werden. Die Auswahl wird lokal im Browser gespeichert.
+
 Die Einstellungen sind über die Home-Kachel und das Kontosymbol erreichbar. Das Kontosymbol zeigt den erkannten Namen als Initiale; sein grüner beziehungsweise roter Rand zeigt den Sync-Status. Benachrichtigungen, Synchronisierung, Sicherung und Protokolldownload befinden sich in den Einstellungen.
 
 Die angezeigte App-Version stammt aus package.json. Bei Fehlerkorrekturen und kleinen Anpassungen wird die Patch-Stelle erhöht, bei neuen Funktionen die Minor-Stelle und bei grundlegenden Änderungen die Major-Stelle. Nach einer Erhöhung werden die jeweils nachfolgenden Stellen auf null gesetzt. Der erste hier dokumentierte Stand ist 0.2.0. Versionsnummer und Lockdatei müssen bei jeder Veröffentlichung gemeinsam aktualisiert werden.

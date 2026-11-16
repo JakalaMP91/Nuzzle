@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./nuzzle-theme.css";
+import { NuzzleThemeProvider } from "@/components/nuzzle-theme";
 
 export const metadata: Metadata = {
   title: "Nuzzle – gemeinsam kochen und planen",
@@ -21,9 +22,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
+    <html lang="de" data-nuzzle-theme="green">
       <head><link rel="manifest" href="/manifest.webmanifest?v=nuzzle-green-1" crossOrigin="use-credentials" /></head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased"><NuzzleThemeProvider>{children}</NuzzleThemeProvider></body>
     </html>
   );
 }

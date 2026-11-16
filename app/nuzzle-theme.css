@@ -1,5 +1,5 @@
 /* Nuzzle: ruhige Grün- und Cremetöne, passend zum Icon. */
-:root {
+:root[data-nuzzle-theme="green"] {
   --background: #f5f8f4;
   --foreground: #203630;
   --card-foreground: #203630;
@@ -21,69 +21,79 @@
   --nest-suggestion-gradient: linear-gradient(145deg, #fff 30%, #edf4ed);
 }
 
-.app-boot { background: #f5f8f4; color: #19483e; }
-.app-shell { background: radial-gradient(circle at 80% 0%, #e2f1e7 0, transparent 25rem), #f5f8f4; }
-.side-rail { background: #143f37; }
-.brand-mark { background: transparent url('/favicon.svg?v=nuzzle-green-1') center / cover no-repeat; box-shadow: 0 10px 24px #001b1633; }
-.brand-mark svg { visibility: hidden; }
-.rail-link { color: #c1d5c8; }
-.rail-link--active { background: #e5f0e7; color: #174d41; }
-.topbar { border-bottom-color: #dbe6dd; background: #f8fbf8e8; }
-.account-button { background: #e5f2e8; color: #18564a; }
-.wordmark-dot { background: #ff806e; }
-.eyebrow, .home-tile-copy small { color: #467366; }
-.home-tile { border-color: #d7e4da; color: #203630; box-shadow: 0 12px 34px #164a3c0b; }
-.home-tile:hover { border-color: #90b5a2; box-shadow: 0 20px 44px #164a3c18; }
-.home-tile:focus-visible { outline-color: #3d8c78; }
-.home-tile--shopping { background: linear-gradient(145deg, #fff 34%, #e4f2e8); }
-.home-tile--recipes { background: linear-gradient(145deg, #fff 34%, #fbefe4); }
-.home-tile--tasks { background: linear-gradient(145deg, #fff 34%, #e2f0ec); }
-.home-tile--pantry { background: linear-gradient(145deg, #fff 34%, #faeae4); }
-.home-tile--settings { background: linear-gradient(145deg, #fff 34%, #edf4ed); }
-.home-tile-icon, .today-icon { background: #176657; color: #fff; box-shadow: 0 10px 24px #164a3c2b; }
-.home-tile--recipes .home-tile-icon { background: #9c5428; color: #fff; }
-.home-tile--tasks .home-tile-icon { background: #276f60; color: #fff; }
-.home-tile--pantry .home-tile-icon { background: #a9564c; color: #fff; }
-.home-today { background: #173f37; }
-.home-today .eyebrow, .today-card .eyebrow { color: #c5dfce; }
-.today-summary button > svg { color: #ffb199; }
-.fab { background: #176657; box-shadow: 0 14px 34px #164a3c52; }
-.shopping-item { border-color: #d5e4d9; border-top-color: #3d8c78; }
-.shopping-item:focus-visible { outline-color: #3d8c78; }
-.shopping-item.drop-before::before, .shopping-item.drop-after::after,
-.task-card.drop-before::before, .task-card.drop-after::after { background: #287968; box-shadow: 0 0 0 3px #e0f0e4; }
-.shopping-item--suggestion { border-color: #dbe5dc; border-top-color: #a7c4b0; }
-.search-box, .sort-button, .task-view-switch, .category-strip button, .touch-chip,
-.quantity-button, .task-choice-grid button, .detail-favorite, .detail-edit { border-color: #d5e4d9; background: linear-gradient(145deg, #fff 30%, #edf5ee); }
-.shopping-edit { color: #287968; }
-.shopping-edit:hover { background: #e5f2e8 !important; color: #176657 !important; }
-.shelves { border-color: #d5e4d9; background: #f2f7f2; box-shadow: 0 12px 28px #164a3c09; }
-.shelf-trigger:hover { background: #e8f2e9; }
-.shelf-meta { background: #dcece0; color: #18564a; }
-.shopping-edit:focus-visible, .task-card-main:focus-visible, .editor-section > summary:focus-visible { outline-color: #3d8c78; }
-.product-glyph { background: #e5f2e8; color: #176657; }
-.product-glyph--quiet { background: #edf2ed; color: #637a6c; }
-.empty-list { border-color: #c8dcd0; color: #64766d; }
-.empty-list svg, .recipe-empty svg, .import-option > svg { color: #287968; }
-.touch-chip.active { border-color: #3d8c78; background: #e5f2e8; color: #18564a; box-shadow: inset 0 0 0 1px #3d8c78; }
-.quantity-button.active, .unit-picker button.active, .task-choice-grid button.active,
-.category-strip button.active, .recipe-variant-options button.active, .recipe-version-tabs button.active { border-color: #176657; background: #176657; color: #fff; }
-.task-view-switch button.active { background: #e5f2e8; color: #18564a; }
-.step-result-chip.active { background: #176657 !important; color: #fff !important; }
-.product-icon-trigger > svg, .product-name-add { background: #176657; color: #fff; }
-.product-icon-categories button.active { border-color: #3d8c78; background: #e5f2e8; color: #18564a; }
-.product-icon-option.active { border-color: #3d8c78; box-shadow: inset 0 0 0 2px #3d8c78; color: #18564a; }
-.calendar-date, .recipe-tags span { background: #e5f2e8; color: #18564a; }
-.task-card-meta em { background: #e5f2e8; color: #18564a; }
-.sheet-hero { background: #e5f2e8; color: #287968; }
-.recipe-tile-action, .shopping-item--suggestion .suggestion-add, .suggestion-edit { color: #287968; border-color: #d5e4d9; }
-.recipe-crop-zoom input { accent-color: #176657; }
-.draft-step > strong, .recipe-step-number { background: #176657; color: #fff; }
-.draft-step-actions button, .recipe-step-output strong { background: #e5f2e8; color: #18564a; }
-.recipe-step-input { color: #18564a; }
-.step-result-chip { border-color: #badac6 !important; background: #edf6ef !important; color: #18564a !important; }
-.task-check:hover, .task-check:focus-visible, .task-check:hover .task-check-mark { border-color: #287968; color: #287968; }
-.task-archive-row button { background: #e5f2e8; color: #18564a; }
-.task-image-add { border-color: #a9cbb5; background: #f5faf5; color: #18564a; }
-.bottom-nav { border-top-color: #dbe6dd; background: #f8fbf8ee; }
-.bottom-nav button.active { background: #e5f2e8; color: #18564a; }
+:root[data-nuzzle-theme="green"] :is(.app-boot) { background: #f5f8f4; color: #19483e; }
+:root[data-nuzzle-theme="green"] :is(.app-shell) { background: radial-gradient(circle at 80% 0%, #e2f1e7 0, transparent 25rem), #f5f8f4; }
+:root[data-nuzzle-theme="green"] :is(.side-rail) { background: #143f37; }
+:root[data-nuzzle-theme="green"] :is(.brand-mark) { background: transparent url('/favicon.svg?v=nuzzle-green-1') center / cover no-repeat; box-shadow: 0 10px 24px #001b1633; }
+:root[data-nuzzle-theme="green"] :is(.brand-mark svg) { visibility: hidden; }
+:root[data-nuzzle-theme="green"] :is(.rail-link) { color: #c1d5c8; }
+:root[data-nuzzle-theme="green"] :is(.rail-link--active) { background: #e5f0e7; color: #174d41; }
+:root[data-nuzzle-theme="green"] :is(.topbar) { border-bottom-color: #dbe6dd; background: #f8fbf8e8; }
+:root[data-nuzzle-theme="green"] :is(.account-button) { background: #e5f2e8; color: #18564a; }
+:root[data-nuzzle-theme="green"] :is(.wordmark-dot) { background: #ff806e; }
+:root[data-nuzzle-theme="green"] :is(.eyebrow, .home-tile-copy small) { color: #467366; }
+:root[data-nuzzle-theme="green"] :is(.home-tile) { border-color: #d7e4da; color: #203630; box-shadow: 0 12px 34px #164a3c0b; }
+:root[data-nuzzle-theme="green"] :is(.home-tile:hover) { border-color: #90b5a2; box-shadow: 0 20px 44px #164a3c18; }
+:root[data-nuzzle-theme="green"] :is(.home-tile:focus-visible) { outline-color: #3d8c78; }
+:root[data-nuzzle-theme="green"] :is(.home-tile--shopping) { background: linear-gradient(145deg, #fff 34%, #e4f2e8); }
+:root[data-nuzzle-theme="green"] :is(.home-tile--recipes) { background: linear-gradient(145deg, #fff 34%, #fbefe4); }
+:root[data-nuzzle-theme="green"] :is(.home-tile--tasks) { background: linear-gradient(145deg, #fff 34%, #e2f0ec); }
+:root[data-nuzzle-theme="green"] :is(.home-tile--pantry) { background: linear-gradient(145deg, #fff 34%, #faeae4); }
+:root[data-nuzzle-theme="green"] :is(.home-tile--settings) { background: linear-gradient(145deg, #fff 34%, #edf4ed); }
+:root[data-nuzzle-theme="green"] :is(.home-tile-icon, .today-icon) { background: #176657; color: #fff; box-shadow: 0 10px 24px #164a3c2b; }
+:root[data-nuzzle-theme="green"] :is(.home-tile--recipes .home-tile-icon) { background: #9c5428; color: #fff; }
+:root[data-nuzzle-theme="green"] :is(.home-tile--tasks .home-tile-icon) { background: #276f60; color: #fff; }
+:root[data-nuzzle-theme="green"] :is(.home-tile--pantry .home-tile-icon) { background: #a9564c; color: #fff; }
+:root[data-nuzzle-theme="green"] :is(.home-today) { background: #173f37; }
+:root[data-nuzzle-theme="green"] :is(.home-today .eyebrow, .today-card .eyebrow) { color: #c5dfce; }
+:root[data-nuzzle-theme="green"] :is(.today-summary button > svg) { color: #ffb199; }
+:root[data-nuzzle-theme="green"] :is(.fab) { background: #176657; box-shadow: 0 14px 34px #164a3c52; }
+:root[data-nuzzle-theme="green"] :is(.shopping-item) { border-color: #d5e4d9; border-top-color: #3d8c78; }
+:root[data-nuzzle-theme="green"] :is(.shopping-item:focus-visible) { outline-color: #3d8c78; }
+:root[data-nuzzle-theme="green"] :is(.shopping-item.drop-before::before, .shopping-item.drop-after::after,
+.task-card.drop-before::before, .task-card.drop-after::after) { background: #287968; box-shadow: 0 0 0 3px #e0f0e4; }
+:root[data-nuzzle-theme="green"] :is(.shopping-item--suggestion) { border-color: #dbe5dc; border-top-color: #a7c4b0; }
+:root[data-nuzzle-theme="green"] :is(.search-box, .sort-button, .task-view-switch, .category-strip button, .touch-chip,
+.quantity-button, .task-choice-grid button, .detail-favorite, .detail-edit) { border-color: #d5e4d9; background: linear-gradient(145deg, #fff 30%, #edf5ee); }
+:root[data-nuzzle-theme="green"] :is(.shopping-edit) { color: #287968; }
+:root[data-nuzzle-theme="green"] :is(.shopping-edit:hover) { background: #e5f2e8 !important; color: #176657 !important; }
+:root[data-nuzzle-theme="green"] :is(.shelves) { border-color: #d5e4d9; background: #f2f7f2; box-shadow: 0 12px 28px #164a3c09; }
+:root[data-nuzzle-theme="green"] :is(.shelf-trigger:hover) { background: #e8f2e9; }
+:root[data-nuzzle-theme="green"] :is(.shelf-meta) { background: #dcece0; color: #18564a; }
+:root[data-nuzzle-theme="green"] :is(.shopping-edit:focus-visible, .task-card-main:focus-visible, .editor-section > summary:focus-visible) { outline-color: #3d8c78; }
+:root[data-nuzzle-theme="green"] :is(.product-glyph) { background: #e5f2e8; color: #176657; }
+:root[data-nuzzle-theme="green"] :is(.product-glyph--quiet) { background: #edf2ed; color: #637a6c; }
+:root[data-nuzzle-theme="green"] :is(.empty-list) { border-color: #c8dcd0; color: #64766d; }
+:root[data-nuzzle-theme="green"] :is(.empty-list svg, .recipe-empty svg, .import-option > svg) { color: #287968; }
+:root[data-nuzzle-theme="green"] :is(.touch-chip.active) { border-color: #3d8c78; background: #e5f2e8; color: #18564a; box-shadow: inset 0 0 0 1px #3d8c78; }
+:root[data-nuzzle-theme="green"] :is(.quantity-button.active, .unit-picker button.active, .task-choice-grid button.active,
+.category-strip button.active, .recipe-variant-options button.active, .recipe-version-tabs button.active) { border-color: #176657; background: #176657; color: #fff; }
+:root[data-nuzzle-theme="green"] :is(.task-view-switch button.active) { background: #e5f2e8; color: #18564a; }
+:root[data-nuzzle-theme="green"] :is(.step-result-chip.active) { background: #176657 !important; color: #fff !important; }
+:root[data-nuzzle-theme="green"] :is(.product-icon-trigger > svg, .product-name-add) { background: #176657; color: #fff; }
+:root[data-nuzzle-theme="green"] :is(.product-icon-categories button.active) { border-color: #3d8c78; background: #e5f2e8; color: #18564a; }
+:root[data-nuzzle-theme="green"] :is(.product-icon-option.active) { border-color: #3d8c78; box-shadow: inset 0 0 0 2px #3d8c78; color: #18564a; }
+:root[data-nuzzle-theme="green"] :is(.calendar-date, .recipe-tags span) { background: #e5f2e8; color: #18564a; }
+:root[data-nuzzle-theme="green"] :is(.task-card-meta em:not(.task-priority)) { background: #e5f2e8; color: #18564a; }
+:root[data-nuzzle-theme="green"] :is(.sheet-hero) { background: #e5f2e8; color: #287968; }
+:root[data-nuzzle-theme="green"] :is(.recipe-tile-action, .shopping-item--suggestion .suggestion-add, .suggestion-edit) { color: #287968; border-color: #d5e4d9; }
+:root[data-nuzzle-theme="green"] :is(.recipe-crop-zoom input) { accent-color: #176657; }
+:root[data-nuzzle-theme="green"] :is(.draft-step > strong, .recipe-step-number) { background: #176657; color: #fff; }
+:root[data-nuzzle-theme="green"] :is(.draft-step-actions button, .recipe-step-output strong) { background: #e5f2e8; color: #18564a; }
+:root[data-nuzzle-theme="green"] :is(.recipe-step-input) { color: #18564a; }
+:root[data-nuzzle-theme="green"] :is(.step-result-chip) { border-color: #badac6 !important; background: #edf6ef !important; color: #18564a !important; }
+:root[data-nuzzle-theme="green"] :is(.task-check:hover, .task-check:focus-visible, .task-check:hover .task-check-mark) { border-color: #287968; color: #287968; }
+:root[data-nuzzle-theme="green"] :is(.task-archive-row button) { background: #e5f2e8; color: #18564a; }
+:root[data-nuzzle-theme="green"] :is(.task-image-add) { border-color: #a9cbb5; background: #f5faf5; color: #18564a; }
+:root[data-nuzzle-theme="green"] :is(.bottom-nav) { border-top-color: #dbe6dd; background: #f8fbf8ee; }
+:root[data-nuzzle-theme="green"] :is(.bottom-nav button.active) { background: #e5f2e8; color: #18564a; }
+
+
+:root[data-nuzzle-theme="green"] :is(.coffee-photo, .coffee-detail-photo) { background: linear-gradient(135deg, #e5f2e8, #d5e9db); color: #638f78; }
+:root[data-nuzzle-theme="green"] :is(.coffee-group-heading > span, .coffee-values span, .coffee-decaf, .coffee-import-preview) { background: #e5f2e8; color: #18564a; }
+:root[data-nuzzle-theme="green"] :is(.coffee-values b) { color: #184a3f; }
+:root[data-nuzzle-theme="green"] :is(.coffee-card:hover) { border-color: #90b5a2; box-shadow: 0 18px 40px #164a3c1a; }
+:root[data-nuzzle-theme="green"] :is(.coffee-dialog) { background: #f5f8f4; }
+:root[data-nuzzle-theme="green"] :is(.coffee-panel, .coffee-profile-picker select, .coffee-field input, .coffee-field select) { border-color: #d5e4d9; }
+.nuzzle-theme-settings p { margin: 6px 0 14px; color: var(--muted-foreground); }
+.nuzzle-theme-choices { display: flex; flex-wrap: wrap; gap: 8px; }
