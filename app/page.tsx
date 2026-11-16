@@ -16,6 +16,7 @@ import { frequentPurchases } from "@/lib/shopping-frequent";
 import { isPantryIngredient } from "@/lib/pantry-match";
 import { combineRecipeVersions } from "@/lib/recipe-versions";
 import { formatRecipeQuantity, parsePositiveAmount, parseRecipeQuantity, shoppingUnits, type ShoppingUnit } from "@/lib/recipe-quantity";
+import { NuzzleLoadingMark } from "@/components/nuzzle-loading-mark";
 import { Button } from "@/components/ui/button";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -1223,7 +1224,7 @@ export default function Home() {
     setTasks((current) => current.filter((task) => task.id !== editingTaskId)); setTaskDialog(false); showNotice("Aufgabe gelöscht");
   }
 
-  if (!ready) return <main className="app-boot" role="status" aria-label="Nuzzle wird geladen"><span className="app-boot-mark" aria-hidden="true" /><span>Nuzzle</span></main>;
+  if (!ready) return <main className="app-boot" role="status" aria-label="Nuzzle wird geladen"><NuzzleLoadingMark /><span>Nuzzle</span></main>;
 
   return <ProductIconContext.Provider value={productIcons}><main className="app-shell">
     <AppNav view={view} setView={(next) => { if (next !== "home" && next !== "settings") notices.acknowledge(next); setView(next); }} counts={{ shopping: notices.state.shopping.length, recipes: notices.state.recipes.length, tasks: notices.state.tasks.length }} />

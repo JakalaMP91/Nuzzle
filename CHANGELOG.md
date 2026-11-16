@@ -1,5 +1,9 @@
 # Änderungen
 
+## Unveröffentlicht
+
+- Animierter Nuzzle-Ladebildschirm mit ruhiger Darstellung bei reduzierter Bewegung.
+
 ## 0.6.2
 
 - Die App heißt jetzt Nuzzle. Bestehende Speicherkennungen und Geräteanmeldungen bleiben erhalten.

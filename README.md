@@ -11,7 +11,7 @@ Für Änderungen zuerst `AGENTS.md` und `docs/architektur.md` lesen. Der aktuell
 
 Lokale Vorschau einer Haushalts-App für Einkaufszettel, Rezepte und Aufgaben.
 Nach `npm ci` startet `npm run dev` die Vorschau auf `http://localhost:5173/`.
-Ohne eingerichteten gemeinsamen Speicher bleiben Eingaben lokal im Browser. Über „Lokal“ lassen sie sich als JSON-Datei sichern. Beim Neuladen erscheint die zuletzt gewählte Ansicht direkt nach einem kurzen neutralen Nuzzle-Startzustand; Home wird nicht mehr kurz eingeblendet. Die Detailseitenleisten öffnen mit einer kurzen Animation. Es ist kein privater GitHub-Account oder Remote erforderlich.
+Ohne eingerichteten gemeinsamen Speicher bleiben Eingaben lokal im Browser. Über „Lokal“ lassen sie sich als JSON-Datei sichern. Beim Neuladen erscheint die zuletzt gewählte Ansicht direkt nach einem kurzen Nuzzle-Startzustand; Home wird nicht mehr kurz eingeblendet. Das Ladesymbol zeigt zwei Bögen und ein Herz. Bei längerer Ladezeit schlägt das Herz sanft; bei reduzierter Bewegung bleibt das Symbol ruhig. Der Start wird für die Animation nicht künstlich verzögert. Die Detailseitenleisten öffnen mit einer kurzen Animation. Es ist kein privater GitHub-Account oder Remote erforderlich.
 
 ## Einstellungen und Versionierung
 
