@@ -1,6 +1,6 @@
 # Deployment und Betrieb
 
-Stand: 15.11.2026. Version 0.6.0 wurde zuletzt veröffentlicht. Die konkrete Worker-Adresse und weitere lokale Betriebsangaben liegen in der ignorierten Datei `.nest-private/deployment-before-privacy.md`. Vor einem Deployment den aktuellen Produktionsstand und das Ziel prüfen.
+Stand: 16.11.2026. Version 0.6.1 wurde veröffentlicht und laut Rückmeldung erfolgreich getestet. Die konkrete Worker-Adresse und weitere lokale Betriebsangaben liegen in der ignorierten Datei `.nest-private/deployment-before-privacy.md`. Vor einem Deployment den aktuellen Produktionsstand und das Ziel prüfen.
 
 Die additive Migration `drizzle/0003_push_preferences.sql` wurde am 15.11.2026 auf der produktiven D1-Datenbank angewendet, nach Prüfung des Schemas und eines Wiederherstellungspunkts. Nicht erneut anwenden.
 
@@ -29,7 +29,7 @@ Version 0.6.0 wurde am 15.11.2026 veröffentlicht. Sie ergänzt Kommentar-Push u
 4. Eine Deployment-Konfiguration aus dem aktuellen `dist/server/wrangler.json` vorbereiten. Sie muss den bestehenden Worker als `name` und `topLevelName`, `push-worker.js` als `main`, die bestehende DB-Bindung und den vorhandenen Cron enthalten, aktuell `* * * * *`. Vor der letzten Veröffentlichung wurde für `DB` ein Wrangler-Inherit-Binding verwendet und der Zeitplan vorab über Cloudflare abgefragt. `workers_dev` war aktiviert und `preview_urls` deaktiviert. Bestehende Routen, weitere Trigger, Observability und Secrets nicht versehentlich ändern. `scripts/prepare-cloudflare-config.mjs` allein erzeugt nur die Grundkonfiguration mit `index.js`, nicht die fertige Push-Konfiguration.
 5. Zugriff mit dem vorgesehenen privaten Cloudflare-Konto prüfen. Anmeldung und Token nicht ausgeben oder in Projektdokumenten speichern. Der private Wrangler-Konfigurationsordner liegt unter `.cloudflare-auth` im Projektverzeichnis und ist von Git ausgeschlossen. Für den Aufruf in PowerShell ` $env:XDG_CONFIG_HOME = (Join-Path (Get-Location) ".cloudflare-auth")` setzen. Falls die Anmeldung fehlt oder abgelaufen ist, eine geeignete Anmeldung herstellen. Keine Zugangsdaten in das Repository kopieren.
 
-Am 16.11.2026 wurde `NEST_COMMENT_AUTHORS` als Cloudflare-Secret im bestehenden Worker eingerichtet; dabei wurde eine neue Worker-Version aktiviert. Vor dem nächsten Deployment prüfen, dass das Secret erhalten bleibt. Die ignorierte Datei `.nest-private/comment-authors.json` enthält die bestehende Zuordnung als JSON von E-Mail-Adressen zu Kommentarnamen. Ohne gültige Zuordnung werden keine Kommentarnamen erkannt, neue Kommentare sind gesperrt und die Push-Geräteverwaltung lehnt Anfragen ab. Keine Werte in Git oder Logs ausgeben. Die laufende Version benötigt diese neue Einstellung noch nicht.
+Am 16.11.2026 wurde `NEST_COMMENT_AUTHORS` als Cloudflare-Secret im bestehenden Worker eingerichtet; dabei wurde eine neue Worker-Version aktiviert. Vor dem nächsten Deployment prüfen, dass das Secret erhalten bleibt. Die ignorierte Datei `.nest-private/comment-authors.json` enthält die bestehende Zuordnung als JSON von E-Mail-Adressen zu Kommentarnamen. Ohne gültige Zuordnung werden keine Kommentarnamen erkannt, neue Kommentare sind gesperrt und die Push-Geräteverwaltung lehnt Anfragen ab. Keine Werte in Git oder Logs ausgeben. Die laufende Version nutzt diese Einstellung.
 
 ## Hochladen und Umschalten
 

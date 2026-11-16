@@ -1,5 +1,9 @@
 # Änderungen
 
+## 0.6.1
+
+- Private E-Mail-Zuordnungen werden über eine geschützte Konfiguration statt im Quellcode verwaltet.
+
 ## 0.6.0
 
 - „Häufig verwendet“ wird anhand abgeschlossener Einkäufe statt fester Beispiele berechnet.
