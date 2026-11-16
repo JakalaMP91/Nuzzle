@@ -1,5 +1,7 @@
 # Deployment und Betrieb
 
+Version 0.8.0 wurde am 16.11.2026 veröffentlicht. Sie ergänzt Nuzzle Koralle, Nest Violett als Standard und ein vollflächiges violettes PWA-Icon. Datenbankbindung, Secrets, Handler, Cron und Zugriffsschutz wurden nach dem Deployment geprüft. Eine Migration war nicht erforderlich. Die Darstellung und die Aktualisierung des installierten Icons auf angemeldeten Geräten sind noch zu prüfen.
+
 Version 0.7.3 wurde am 16.11.2026 veröffentlicht. Sie passt Home-Farben, Hinzufügen-Aktionen und das violette Logo an. Datenbankbindung, Secrets, Handler, Cron und Zugriffsschutz wurden nach dem Deployment geprüft. Eine Migration war nicht erforderlich. Die Darstellung und Funktionen auf angemeldeten Geräten sind noch zu prüfen.
 
 Version 0.7.2 wurde am 16.11.2026 veröffentlicht. Sie ergänzt das grüne Icon, die Ladeanimation und das pro Browser umschaltbare Farbschema. Die bestehende D1-Bindung, Secrets, Handler, Cron und der Zugriffsschutz wurden geprüft. Eine Migration war nicht erforderlich. Die Darstellung, Icon-Aktualisierung, Synchronisierung und Push-Zustellung auf angemeldeten Geräten sind noch zu prüfen.

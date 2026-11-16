@@ -23,7 +23,7 @@ Ohne eingerichteten gemeinsamen Speicher bleiben Eingaben lokal im Browser. Übe
 
 ## Einstellungen und Versionierung
 
-Unter „Farbschema“ kann auf diesem Gerät zwischen Nuzzle Grün und dem bisherigen Violett gewechselt werden. Die Auswahl wird lokal im Browser gespeichert. Ladebildschirm und Browser-Icon passen sich an. Bei bereits installierten Apps entscheidet das Betriebssystem, wann das Icon aktualisiert wird.
+Unter „Farbschema“ kann auf diesem Gerät zwischen Nest Violett, Nuzzle Grün und Nuzzle Koralle gewechselt werden. Die Auswahl wird lokal im Browser gespeichert. Nest Violett ist der Standard für neue Geräte, vorhandene Einstellungen bleiben erhalten. Der Ladebildschirm passt sich an; das App-Icon ist einheitlich violett. Bei bereits installierten Apps entscheidet das Betriebssystem, wann das Icon aktualisiert wird.
 
 Die Einstellungen sind über die Home-Kachel und das Kontosymbol erreichbar. Das Kontosymbol zeigt den erkannten Namen als Initiale; sein grüner beziehungsweise roter Rand zeigt den Sync-Status. Benachrichtigungen, Synchronisierung, Sicherung und Protokolldownload befinden sich in den Einstellungen.
 

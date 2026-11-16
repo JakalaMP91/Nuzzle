@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description: "Gemeinsam Rezepte sammeln, einkaufen und den Alltag organisieren.",
   appleWebApp: { capable: true, title: "Nuzzle", statusBarStyle: "default" },
 icons: {
-    icon: "/favicon.svg?v=nuzzle-green-1",
-    shortcut: "/favicon.svg?v=nuzzle-green-1",
-    apple: "/nuzzle-icon-180.png?v=nuzzle-green-1",
+    icon: "/nuzzle-icon-violet.svg?v=1",
+    shortcut: "/nuzzle-icon-violet.svg?v=1",
+    apple: "/nuzzle-icon-full-180.png?v=2",
   },
 };
 
-export const viewport: Viewport = { width: "device-width", initialScale: 1, maximumScale: 1, userScalable: false, themeColor: "#f8f7fc" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, maximumScale: 1, userScalable: false, themeColor: "#21194d" };
 
 export default function RootLayout({
   children,
@@ -22,8 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" data-nuzzle-theme="green">
-      <head><link rel="manifest" href="/manifest.webmanifest?v=nuzzle-green-1" crossOrigin="use-credentials" /></head>
+    <html lang="de" data-nuzzle-theme="classic">
+      <head><link rel="manifest" href="/manifest.webmanifest?v=2" crossOrigin="use-credentials" /></head>
       <body className="antialiased"><NuzzleThemeProvider>{children}</NuzzleThemeProvider></body>
     </html>
   );

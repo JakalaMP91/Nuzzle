@@ -1,5 +1,9 @@
 # Änderungen
 
+## 0.8.0
+
+- Nest Violett als Standard, vollflächiges PWA-Icon und Startbildschirm sowie das zusätzliche Farbschema Nuzzle Koralle.
+
 ## 0.7.3
 
 - Home-Farben, schwebende Aktionen und das Logo für das violette Farbschema angepasst.

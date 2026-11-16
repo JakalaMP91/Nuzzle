@@ -1,6 +1,6 @@
 # Architektur von Nuzzle
 
-Stand: 16.11.2026, veröffentlichte Version 0.7.3. Seit 16.11.2026 liegt die maßgebliche Arbeitskopie im privaten Projektverzeichnis; siehe `AGENTS.md`. Maßgeblich für Details ist der aktuelle Quellcode.
+Stand: 16.11.2026, veröffentlichte Version 0.8.0. Seit 16.11.2026 liegt die maßgebliche Arbeitskopie im privaten Projektverzeichnis; siehe `AGENTS.md`. Maßgeblich für Details ist der aktuelle Quellcode.
 
 ## Überblick
 
