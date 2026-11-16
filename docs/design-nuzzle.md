@@ -6,6 +6,6 @@ Die ursprüngliche hochaufgelöste PNG-Vorlage liegt in `assets/nuzzle-icon-orig
 
 Die Bögen des Ladebildschirms gleiten einmal über zwei Sekunden ein. Bei längerer Ladezeit pulsiert das Herz; bei reduzierter Bewegung bleibt das Symbol ruhig. Der tatsächliche App-Start wird nicht verzögert, weshalb die Animation auf schnellen Geräten nur kurz sichtbar sein kann.
 
-Unter „Einstellungen → Farbschema“ kann zwischen Nuzzle Grün und dem bisherigen Violett gewechselt werden. Die Auswahl wird unabhängig von den Haushaltsdaten pro Browser gespeichert. Wenn der Browserspeicher nicht verfügbar ist, gilt die Auswahl nur bis zum Neuladen. Das App-Icon bleibt in beiden Farbschemata grün.
+Unter „Einstellungen → Farbschema“ kann zwischen Nuzzle Grün und dem bisherigen Violett gewechselt werden. Die Auswahl wird unabhängig von den Haushaltsdaten pro Browser gespeichert. Wenn der Browserspeicher nicht verfügbar ist, gilt die Auswahl nur bis zum Neuladen. Beim Wechsel werden passende Browser-Icons, Manifeste und der Ladebildschirm ausgewählt. Bereits installierte Apps übernehmen ein neues Icon möglicherweise erst verzögert oder nach erneuter Installation; die Entscheidung liegt beim Betriebssystem. Push-Benachrichtigungen verwenden weiterhin das grüne Icon.
 
 Vor einer Veröffentlichung Darstellung, Kontraste und die Aktualisierung des Icons auf den betroffenen Geräten prüfen.

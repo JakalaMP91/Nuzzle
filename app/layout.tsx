@@ -14,7 +14,7 @@ icons: {
   },
 };
 
-export const viewport: Viewport = { width: "device-width", initialScale: 1, maximumScale: 1, userScalable: false, themeColor: "#f5f8f4" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, maximumScale: 1, userScalable: false, themeColor: "#f8f7fc" };
 
 export default function RootLayout({
   children,

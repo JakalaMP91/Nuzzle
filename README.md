@@ -2,7 +2,7 @@
 
 ## Kaffee
 
-Die Übersicht zeigt vorhandene und nicht mehr vorhandene Sorten als Kacheln. Das Plus legt eine Sorte an, ein Klick auf eine Kachel öffnet die Details. Bei mehreren Profilen lässt sich das angezeigte Profil direkt auf der Kachel auswählen.
+Die Übersicht zeigt vorhandene und nicht mehr vorhandene Sorten als Kacheln. Der schwebende Knopf „Kaffee hinzufügen“ legt eine Sorte an, ein Klick auf eine Kachel öffnet die Details. Bei mehreren Profilen lässt sich das angezeigte Profil direkt auf der Kachel auswählen.
 
 Import, Export, Profilvorschläge und der Status der Kaffee-Synchronisierung liegen unter „Einstellungen → Synchronisierung und Sicherung“. Dort lässt sich ein JSON-Backup des Coffee Trackers prüfen und importieren. Bei gleichen IDs kann man vorhandene Kaffees behalten oder ersetzen. Die separate Kaffee-Sicherung enthält Fotos, die Haushalts-Sicherung enthält keine Kaffeedaten.
 
@@ -23,7 +23,7 @@ Ohne eingerichteten gemeinsamen Speicher bleiben Eingaben lokal im Browser. Übe
 
 ## Einstellungen und Versionierung
 
-Unter „Farbschema“ kann auf diesem Gerät zwischen Nuzzle Grün und dem bisherigen Violett gewechselt werden. Die Auswahl wird lokal im Browser gespeichert.
+Unter „Farbschema“ kann auf diesem Gerät zwischen Nuzzle Grün und dem bisherigen Violett gewechselt werden. Die Auswahl wird lokal im Browser gespeichert. Ladebildschirm und Browser-Icon passen sich an. Bei bereits installierten Apps entscheidet das Betriebssystem, wann das Icon aktualisiert wird.
 
 Die Einstellungen sind über die Home-Kachel und das Kontosymbol erreichbar. Das Kontosymbol zeigt den erkannten Namen als Initiale; sein grüner beziehungsweise roter Rand zeigt den Sync-Status. Benachrichtigungen, Synchronisierung, Sicherung und Protokolldownload befinden sich in den Einstellungen.
 
@@ -40,6 +40,8 @@ In den Einstellungen kann auf jedem Gerät ein separates Benachrichtigungsprotok
 In den Einstellungen unter „Synchronisierung und Sicherung“ lässt sich das Sync-Protokoll als JSON herunterladen. Es liegt nur im Speicher des jeweiligen Browsers und enthält höchstens die letzten 200 technischen Ereignisse: UTC-Zeit nach Geräteuhr, Vorgang, Ergebnis, Fehlerklasse, gegebenenfalls HTTP-Status, Revisionsnummern, einen groben Konfliktbereich, Dauer und den vom Browser gemeldeten Online-Status. Es enthält keine Haushaltsinhalte, Zugangsdaten oder Server-Fehlermeldungen und wird nicht automatisch übertragen. Bei Problemen das Protokoll auf dem betroffenen Gerät herunterladen. Ereignisse vor dieser Funktion sind nicht verfügbar; serverseitige Ursachen lassen sich damit nicht immer bestimmen. Wird der Browserspeicher blockiert oder gelöscht, ist das Protokoll nur während der laufenden Sitzung beziehungsweise nicht mehr verfügbar. `node --experimental-strip-types --test lib/sync-log.test.mjs` prüft Begrenzung, Fehlerklassifizierung und Speicherfehler.
 
 ## Aufgaben
+
+Über „Element hinzufügen“ lassen sich neue Aufgaben oder Bereiche anlegen. Die Auswahl öffnet sich beim Darüberfahren oder per Klick beziehungsweise Berührung. Die Knöpfe zum Anlegen einer Aufgabe direkt in einem Bereich bleiben verfügbar.
 
 Aufgaben können im Board, auf der Startseite und in den Details erledigt werden. Der Hinweis bietet kurz eine Rücknahme; im standardmäßig geschlossenen Archiv lassen sie sich später wiederherstellen. Fehlt der frühere Bereich, wird „Unbekannt“ angelegt. Bei älteren Einträgen wird „Ich“ als Markus und „Partner“ als Bettina angezeigt.
 

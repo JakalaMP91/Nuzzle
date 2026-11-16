@@ -1,5 +1,9 @@
 # Änderungen
 
+## 0.7.3
+
+- Home-Farben, schwebende Aktionen und das Logo für das violette Farbschema angepasst.
+
 ## 0.7.2
 
 - Neues Nuzzle-Icon, animierter Ladebildschirm und pro Gerät umschaltbares Farbschema.
