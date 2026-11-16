@@ -1,6 +1,6 @@
 # Änderungen
 
-## 0.7.2 (vorbereitet)
+## 0.7.2
 
 - Neues Nuzzle-Icon, animierter Ladebildschirm und pro Gerät umschaltbares Farbschema.
 

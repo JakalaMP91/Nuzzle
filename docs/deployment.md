@@ -1,5 +1,7 @@
 # Deployment und Betrieb
 
+Version 0.7.2 wurde am 16.11.2026 veröffentlicht. Sie ergänzt das grüne Icon, die Ladeanimation und das pro Browser umschaltbare Farbschema. Die bestehende D1-Bindung, Secrets, Handler, Cron und der Zugriffsschutz wurden geprüft. Eine Migration war nicht erforderlich. Die Darstellung, Icon-Aktualisierung, Synchronisierung und Push-Zustellung auf angemeldeten Geräten sind noch zu prüfen.
+
 Version 0.7.1 wurde am 16.11.2026 veröffentlicht. Die Kaffee-Ansicht wurde überarbeitet; eine Datenbankmigration war nicht erforderlich. Nach der Aktivierung wurden Bindungen, Tabellen, Cron und Zugriffsschutz geprüft. Die neue Ansicht wurde lokal mit Beispieldaten geprüft; ein angemeldeter Test auf dem Tablet steht noch aus.
 
 Stand: 16.11.2026. Version 0.7.0 mit dem Kaffee-Bereich wurde veröffentlicht. Die additive Migration `drizzle/0005_coffee.sql` wurde nach Prüfung des Schemas und eines Wiederherstellungspunkts angewendet. Cloudflare-Bindungen, Zugriffsschutz, Tabellen und Cron wurden nach der Aktivierung geprüft. Der angemeldete Kaffee-Import und die Synchronisierung auf echten Geräten sind noch zu prüfen. Die konkrete Worker-Adresse und weitere lokale Betriebsangaben liegen in der ignorierten Datei `.nest-private/deployment-before-privacy.md`. Vor einem Deployment den aktuellen Produktionsstand und das Ziel prüfen.
