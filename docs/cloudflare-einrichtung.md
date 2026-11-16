@@ -1,11 +1,11 @@
 # Vorbereitung für Cloudflare
 
-Stand 15.11.2026: Nest ist bereits über Cloudflare Workers mit D1 und Access veröffentlicht. Diese Datei beschreibt die ursprüngliche Ersteinrichtung. Für den bestehenden produktiven Betrieb und Releases gilt `deployment.md`. Es gibt keinen Kalenderzugriff.
+Stand 15.11.2026: Nuzzle ist bereits über Cloudflare Workers mit D1 und Access veröffentlicht. Diese Datei beschreibt die ursprüngliche Ersteinrichtung. Für den bestehenden produktiven Betrieb und Releases gilt `deployment.md`. Es gibt keinen Kalenderzugriff.
 
 ## Vor einer Nutzung mit echten Daten
 
 1. Google als Identitätsanbieter in Cloudflare Zero Trust einrichten. Die Access-Richtlinie auf die beiden konkreten Google-Adressen begrenzen. Die Google-Anmeldung allein gewährt keinen Kalenderzugriff.
-2. Eine leere D1-Datenbank für Nest anlegen. Die Migration `drizzle/0000_marvelous_firebrand.sql` einmalig auf diese Datenbank anwenden. Nicht auf eine bereits produktiv genutzte Datenbank anwenden, ohne ihren Zustand vorher zu prüfen.
+2. Eine leere D1-Datenbank für Nuzzle anlegen. Die Migration `drizzle/0000_marvelous_firebrand.sql` einmalig auf diese Datenbank anwenden. Nicht auf eine bereits produktiv genutzte Datenbank anwenden, ohne ihren Zustand vorher zu prüfen.
 3. Den Worker-Build erstellen. Mit `node scripts/prepare-cloudflare-config.mjs <worker-name> <d1-name> <d1-uuid>` lässt sich aus dem Build die lokale Datei `dist/server/wrangler.nest.json` erzeugen. Der Befehl veröffentlicht nichts. Die Werte stammen aus dem eigenen Cloudflare-Konto. Die Build-Datei enthält nur Konfiguration und keine Zugangsdaten.
 4. Einen Worker und eine Access-Anwendung einrichten. Die Access-Richtlinie muss sämtliche genutzten Adressen einschließlich `workers.dev` und etwaiger Vorschauadressen abdecken. Vorschau-URLs sind in der vorbereiteten Konfiguration deaktiviert. Auch die Infrastrukturkonfiguration muss vor der Nutzung mit echten Daten kontrolliert werden. Solange Access fehlt, ist die Oberfläche gegebenenfalls öffentlich erreichbar. Die Daten-API und der produktive Rezeptimport lehnen Anfragen ohne gültiges Token ab.
 5. Am Worker serverseitig folgende Werte setzen: `NEST_ACCESS_TEAM_DOMAIN` als Cloudflare-Access-Team-Domain, `NEST_ACCESS_AUDIENCE` als Audience der Access-Anwendung und `NEST_ALLOWED_EMAILS` als kommaseparierte Liste der zwei zugelassenen Google-Adressen. Optional den vorhandenen `GEMINI_API_KEY` als Worker-Secret für den Rezeptimport setzen. Keine Werte in Quellcode oder Chat hinterlegen.

@@ -53,7 +53,7 @@ export function createPushService({ db, identify, config, send, now = Date.now }
       const subscription = parsePushSubscription(JSON.parse(row.subscription));
       if (!subscription) return reply({ error: "Das Gerät muss erneut aktiviert werden." }, 409);
       try {
-        const status = await send(subscription, { title: "Nest", body: "Benachrichtigungen auf diesem Gerät sind aktiviert.", tag: "nest-test", url: "/?view=tasks" });
+        const status = await send(subscription, { title: "Nuzzle", body: "Benachrichtigungen auf diesem Gerät sind aktiviert.", tag: "nest-test", url: "/?view=tasks" });
         if (status === 404 || status === 410) {
           await db.prepare("DELETE FROM push_subscription WHERE endpoint = ? AND author = ?").bind(subscription.endpoint, author).run();
           return reply({ error: "Das Gerät muss erneut aktiviert werden.", providerStatus: status }, 409);

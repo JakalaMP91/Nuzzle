@@ -38,8 +38,8 @@ type Purchase = { id: string; item: ShoppingItem; checkedAt: number; actor?: str
 const quietPeriod = 5 * 60_000;
 export function shoppingNotifications(data: { items: unknown[]; purchaseHistory: unknown[] }, viewer: string, since: number, now: number) {
   const eligible = (at: number, actor?: string) => Number.isFinite(at) && at > since && at <= now - quietPeriod && at >= now - 24 * 60 * 60_000 && (actor === "Markus" || actor === "Bettina") && actor !== viewer;
-  const added = (data.items as ShoppingItem[]).filter(item => eligible(item.addedAt ?? 0, item.createdBy)).map(item => ({ key: `shopping-add:${item.id}`, title: "Nest · Einkaufsliste", name: item.name }));
-  const purchased = (data.purchaseHistory as Purchase[]).filter(record => eligible(record.checkedAt, record.actor) && record.checkedAt - (record.item.addedAt ?? (record.item.id > 946684800000 ? record.item.id : 0)) >= quietPeriod).map(record => ({ key: `shopping-bought:${record.id}`, title: "Nest · Eingekauft", name: record.item.name }));
+  const added = (data.items as ShoppingItem[]).filter(item => eligible(item.addedAt ?? 0, item.createdBy)).map(item => ({ key: `shopping-add:${item.id}`, title: "Nuzzle · Einkaufsliste", name: item.name }));
+  const purchased = (data.purchaseHistory as Purchase[]).filter(record => eligible(record.checkedAt, record.actor) && record.checkedAt - (record.item.addedAt ?? (record.item.id > 946684800000 ? record.item.id : 0)) >= quietPeriod).map(record => ({ key: `shopping-bought:${record.id}`, title: "Nuzzle · Eingekauft", name: record.item.name }));
   return [...added, ...purchased];
 }
 
@@ -81,7 +81,7 @@ export async function runTaskPush({ db, config, send, now = Date.now() }: Depend
       const claim = await db.prepare("INSERT INTO push_delivery (endpoint, notification_key, attempted_at, sent) VALUES (?, ?, ?, 0) ON CONFLICT(endpoint, notification_key) DO UPDATE SET attempted_at = excluded.attempted_at WHERE push_delivery.sent = 0 AND push_delivery.attempted_at < ? RETURNING notification_key").bind(device.endpoint, key, now, now - 15 * 60_000).first();
       if (!claim) continue;
       let status = 0;
-      try { status = await send(subscription, { title: "Nest · Neue Aufgabe", body: task.title.slice(0, 160), tag: key, url: "/?view=tasks" }); } catch { /* Retry after lease. */ }
+      try { status = await send(subscription, { title: "Nuzzle · Neue Aufgabe", body: task.title.slice(0, 160), tag: key, url: "/?view=tasks" }); } catch { /* Retry after lease. */ }
       attempts++;
       await db.prepare("UPDATE push_delivery SET sent = ?, last_status = ? WHERE endpoint = ? AND notification_key = ?").bind(status >= 200 && status < 300 ? 1 : 0, status, device.endpoint, key).run();
       if (status === 404 || status === 410) { await db.prepare("DELETE FROM push_subscription WHERE endpoint = ?").bind(device.endpoint).run(); subscription = null; break; }
@@ -93,7 +93,7 @@ export async function runTaskPush({ db, config, send, now = Date.now() }: Depend
       const claim = await db.prepare("INSERT INTO push_delivery (endpoint, notification_key, attempted_at, sent) VALUES (?, ?, ?, 0) ON CONFLICT(endpoint, notification_key) DO UPDATE SET attempted_at = excluded.attempted_at WHERE push_delivery.sent = 0 AND push_delivery.attempted_at < ? RETURNING notification_key").bind(device.endpoint, key, now, now - 15 * 60_000).first();
       if (!claim) continue;
       let status = 0;
-      try { status = await send(subscription, { title: "Nest · Neuer Kommentar", body: task.title.slice(0, 160), tag: key, url: "/?view=tasks" }); } catch { /* Retry after lease. */ }
+      try { status = await send(subscription, { title: "Nuzzle · Neuer Kommentar", body: task.title.slice(0, 160), tag: key, url: "/?view=tasks" }); } catch { /* Retry after lease. */ }
       attempts++;
       await db.prepare("UPDATE push_delivery SET sent = ?, last_status = ? WHERE endpoint = ? AND notification_key = ?").bind(status >= 200 && status < 300 ? 1 : 0, status, device.endpoint, key).run();
       if (status === 404 || status === 410) { await db.prepare("DELETE FROM push_subscription WHERE endpoint = ?").bind(device.endpoint).run(); subscription = null; break; }
@@ -109,7 +109,7 @@ export async function runTaskPush({ db, config, send, now = Date.now() }: Depend
       const claim = await db.prepare("INSERT INTO push_delivery (endpoint, notification_key, attempted_at, sent) VALUES (?, ?, ?, 0) ON CONFLICT(endpoint, notification_key) DO UPDATE SET attempted_at = excluded.attempted_at WHERE push_delivery.sent = 0 AND push_delivery.attempted_at < ? RETURNING notification_key")
         .bind(device.endpoint, reminder.key, now, now - 15 * 60_000).first();
       if (!claim) continue;
-      const message = { title: reminder.state === "overdue" ? "Nest · Aufgabe fällig" : "Nest · Aufgabe bald fällig", body: task.title.slice(0, 160), tag: `nest-task-${task.id}`, url: "/?view=tasks" };
+      const message = { title: reminder.state === "overdue" ? "Nuzzle · Aufgabe fällig" : "Nuzzle · Aufgabe bald fällig", body: task.title.slice(0, 160), tag: `nest-task-${task.id}`, url: "/?view=tasks" };
       let status = 0;
       try { status = await send(subscription, message); } catch { /* Retry after the lease expires; do not log subscription secrets. */ }
       attempts++;

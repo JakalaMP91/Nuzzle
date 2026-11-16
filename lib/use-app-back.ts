@@ -32,7 +32,7 @@ const isCloseOnly = (a: AppNavigation, b: AppNavigation) => {
 };
 
 // The guard lives in browser history; private application state remains in
-// memory. Back consumes one Nest state instead of returning to the login page.
+// memory. Back consumes one Nuzzle state instead of returning to the login page.
 export function useAppBack(ready: boolean, snapshot: AppNavigation, restore: (snapshot: AppNavigation) => void) {
   const current = useRef(snapshot);
   const previous = useRef(snapshot);

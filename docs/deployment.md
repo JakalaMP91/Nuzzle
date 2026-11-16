@@ -1,6 +1,6 @@
 # Deployment und Betrieb
 
-Stand: 16.11.2026. Version 0.6.1 wurde veröffentlicht und laut Rückmeldung erfolgreich getestet. Die konkrete Worker-Adresse und weitere lokale Betriebsangaben liegen in der ignorierten Datei `.nest-private/deployment-before-privacy.md`. Vor einem Deployment den aktuellen Produktionsstand und das Ziel prüfen.
+Stand: 16.11.2026. Version 0.6.2 wurde am 16.11.2026 mit dem App-Namen Nuzzle veröffentlicht. Cloudflare-Bindungen, Zugriffsschutz und Cron wurden geprüft. Die Darstellung und Push-Zustellung auf Geräten sind noch zu prüfen. Die konkrete Worker-Adresse und weitere lokale Betriebsangaben liegen in der ignorierten Datei `.nest-private/deployment-before-privacy.md`. Vor einem Deployment den aktuellen Produktionsstand und das Ziel prüfen.
 
 Die additive Migration `drizzle/0003_push_preferences.sql` wurde am 15.11.2026 auf der produktiven D1-Datenbank angewendet, nach Prüfung des Schemas und eines Wiederherstellungspunkts. Nicht erneut anwenden.
 
@@ -36,9 +36,9 @@ Am 16.11.2026 wurde `NEST_COMMENT_AUTHORS` als Cloudflare-Secret im bestehenden 
 Mit dem im Projekt installierten Wrangler und der zuvor geprüften Konfiguration eine neue Version hochladen, beispielsweise:
 
 ```powershell
-node .\node_modules\wrangler\bin\wrangler.js versions upload --config dist/server/wrangler.inherit.json --keep-vars --message "Nest <Version>"
+node .\node_modules\wrangler\bin\wrangler.js versions upload --config dist/server/wrangler.inherit.json --keep-vars --message "Nuzzle <Version>"
 node .\node_modules\wrangler\bin\wrangler.js versions view <Worker-Version-ID> --config dist/server/wrangler.inherit.json
-node .\node_modules\wrangler\bin\wrangler.js versions deploy <Worker-Version-ID>@100 --config dist/server/wrangler.inherit.json --yes --message "Nest <Version>"
+node .\node_modules\wrangler\bin\wrangler.js versions deploy <Worker-Version-ID>@100 --config dist/server/wrangler.inherit.json --yes --message "Nuzzle <Version>"
 node .\node_modules\wrangler\bin\wrangler.js deployments list --config dist/server/wrangler.inherit.json
 ```
 

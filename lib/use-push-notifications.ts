@@ -75,7 +75,7 @@ export function usePushNotifications(ready: boolean) {
     if (busy) return;
     setBusy(true); setMessage("");
     try {
-      if (!supportedBrowser()) throw new Error("Dieser Browser unterstützt keine Push-Benachrichtigungen. Auf iPhone und iPad Nest zuerst zum Home-Bildschirm hinzufügen.");
+      if (!supportedBrowser()) throw new Error("Dieser Browser unterstützt keine Push-Benachrichtigungen. Auf iPhone und iPad Nuzzle zuerst zum Home-Bildschirm hinzufügen.");
       // Request before any network awaits so Safari keeps the user gesture.
       const permission = Notification.permission === "granted" ? "granted" : await Notification.requestPermission();
       if (permission !== "granted") throw new Error("Benachrichtigungen sind nicht erlaubt. Bitte die Berechtigung in den Browser- oder Geräteeinstellungen freigeben.");
@@ -151,7 +151,7 @@ export function usePushNotifications(ready: boolean) {
       }
       const report = { format: "nest-push-diagnostics-v1", exportedAt: new Date().toISOString(), appVersion, device: { supported, permission: typeof Notification === "undefined" ? "unsupported" : Notification.permission, status, configured, subscriptionPresent: Boolean(subscription), online: navigator.onLine, shoppingEnabled, reminderTime }, local, server };
       const blob = new Blob([JSON.stringify(report, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob), link = document.createElement("a"); link.href = url; link.download = "nest-benachrichtigungsprotokoll.json"; link.click(); URL.revokeObjectURL(url);
+      const url = URL.createObjectURL(blob), link = document.createElement("a"); link.href = url; link.download = "nuzzle-benachrichtigungsprotokoll.json"; link.click(); URL.revokeObjectURL(url);
       setMessage(local.available ? "Benachrichtigungsprotokoll heruntergeladen." : "Protokoll heruntergeladen; der lokale Diagnosespeicher ist nicht verfügbar.");
     } catch { setMessage("Das Benachrichtigungsprotokoll konnte nicht heruntergeladen werden."); }
   }

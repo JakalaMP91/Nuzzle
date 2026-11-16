@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Nest – gemeinsam kochen und planen",
+  title: "Nuzzle – gemeinsam kochen und planen",
   description: "Gemeinsam Rezepte sammeln, einkaufen und den Alltag organisieren.",
-  appleWebApp: { capable: true, title: "Nest", statusBarStyle: "default" },
+  appleWebApp: { capable: true, title: "Nuzzle", statusBarStyle: "default" },
 icons: {
     icon: "/favicon.svg?v=house-heart",
     shortcut: "/favicon.svg?v=house-heart",

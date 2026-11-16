@@ -1,10 +1,10 @@
-# Architektur von Nest
+# Architektur von Nuzzle
 
 Stand: 15.11.2026, veröffentlichte Version 0.6.0. Seit 16.11.2026 liegt die maßgebliche Arbeitskopie im privaten Projektverzeichnis; siehe `AGENTS.md`. Maßgeblich für Details ist der aktuelle Quellcode.
 
 ## Überblick
 
-Nest ist eine private Haushalts-Web-App für Einkaufsliste, Rezepte und Aufgaben. React und TypeScript bilden die Oberfläche; das Next-App-Router-Modell wird mit Vinext und Vite als Cloudflare Worker gebaut. Die Oberfläche liegt überwiegend in `app/page.tsx`, das Styling in `app/globals.css`. Wiederverwendbare Regeln und Dienste liegen in `lib/`, UI-Bausteine in `components/`.
+Nuzzle ist eine private Haushalts-Web-App für Einkaufsliste, Rezepte und Aufgaben. React und TypeScript bilden die Oberfläche; das Next-App-Router-Modell wird mit Vinext und Vite als Cloudflare Worker gebaut. Die Oberfläche liegt überwiegend in `app/page.tsx`, das Styling in `app/globals.css`. Wiederverwendbare Regeln und Dienste liegen in `lib/`, UI-Bausteine in `components/`.
 
 ```text
 Browser/PWA ── lokale Daten und Geräteeinstellungen
@@ -34,6 +34,6 @@ Cloudflare Access schützt den Worker. `lib/household-auth.ts` prüft zusätzlic
 
 ## Datenbank und Betrieb
 
-Das Drizzle-Schema liegt in `db/schema.ts`, SQL-Migrationen in `drizzle/`. Die Push-Migration ergänzt eigene Tabellen. Den tatsächlichen Migrationsstand vor Datenbankänderungen prüfen und eine Sicherung einplanen. `public/manifest.webmanifest` und die Nest-Icons definieren die installierbare PWA. Der Browser entscheidet über Aktualisierung und Anzeige des Icons.
+Das Drizzle-Schema liegt in `db/schema.ts`, SQL-Migrationen in `drizzle/`. Die Push-Migration ergänzt eigene Tabellen. Den tatsächlichen Migrationsstand vor Datenbankänderungen prüfen und eine Sicherung einplanen. `public/manifest.webmanifest` und die Nuzzle-Icons definieren die installierbare PWA. Der Browser entscheidet über Aktualisierung und Anzeige des Icons.
 
 Zuletzt verwendete Einkaufsvorschläge speichern bei Abschluss `lastPurchasedAt`; ältere Zeitstempel-IDs dienen als Fallback. `lib/shopping-recent.ts` gruppiert nach Berliner Kalendertagen, unbekannte Daten bleiben gesondert. Weitere Regeln zu Mengen, Sortierung, Einkauf und Benutzeroberfläche stehen in der README. Die Deployment-Anleitung beschreibt den Produktionsaufbau, Bindungen und Prüfung.

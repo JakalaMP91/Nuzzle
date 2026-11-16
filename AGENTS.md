@@ -1,4 +1,4 @@
-# Hinweise für die Weiterarbeit an Nest
+# Hinweise für die Weiterarbeit an Nuzzle
 
 ## Einstieg und Projektstand
 

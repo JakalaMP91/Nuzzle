@@ -1,4 +1,4 @@
-/* Nest receives visible notifications only. No request interception or cache. */
+/* Nuzzle receives visible notifications only. No request interception or cache. */
 // Bounded, content-free device events. Diagnostics never block notification display.
 function logPush(event, outcome, kind) {
   return new Promise((resolve) => {
@@ -32,7 +32,7 @@ function pushKind(tag) {
 self.addEventListener("install", () => self.skipWaiting());
 self.addEventListener("activate", (event) => event.waitUntil(self.clients.claim()));
 self.addEventListener("push", (event) => {
-  let message = { title: "Nest", body: "Eine Aufgabe wartet auf dich.", tag: "nest-task", url: "/?view=tasks" };
+  let message = { title: "Nuzzle", body: "Eine Aufgabe wartet auf dich.", tag: "nest-task", url: "/?view=tasks" };
   try { if (event.data) message = { ...message, ...event.data.json() }; } catch { /* Display a useful generic notification. */ }
   const kind = pushKind(String(message.tag));
   const receipt = logPush("push_received", "received", kind);

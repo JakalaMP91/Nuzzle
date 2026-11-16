@@ -1,5 +1,9 @@
 # Änderungen
 
+## 0.6.2
+
+- Die App heißt jetzt Nuzzle. Bestehende Speicherkennungen und Geräteanmeldungen bleiben erhalten.
+
 ## 0.6.1
 
 - Private E-Mail-Zuordnungen werden über eine geschützte Konfiguration statt im Quellcode verwaltet.
