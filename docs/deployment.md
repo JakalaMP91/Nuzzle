@@ -1,5 +1,7 @@
 # Deployment und Betrieb
 
+Version 0.8.1 wurde am 17.11.2026 veröffentlicht. Sie ergänzt ein einfarbiges Nuzzle-Symbol für die Android-Statusleiste und das violette Benachrichtigungsicon. Datenbankbindung, Secrets, Handler, Cron und Zugriffsschutz wurden geprüft. Eine Migration war nicht erforderlich. Die tatsächliche Anzeige auf Android ist noch zu prüfen.
+
 Version 0.8.0 wurde am 16.11.2026 veröffentlicht. Sie ergänzt Nuzzle Koralle, Nest Violett als Standard und ein vollflächiges violettes PWA-Icon. Datenbankbindung, Secrets, Handler, Cron und Zugriffsschutz wurden nach dem Deployment geprüft. Eine Migration war nicht erforderlich. Die Darstellung und die Aktualisierung des installierten Icons auf angemeldeten Geräten sind noch zu prüfen.
 
 Version 0.7.3 wurde am 16.11.2026 veröffentlicht. Sie passt Home-Farben, Hinzufügen-Aktionen und das violette Logo an. Datenbankbindung, Secrets, Handler, Cron und Zugriffsschutz wurden nach dem Deployment geprüft. Eine Migration war nicht erforderlich. Die Darstellung und Funktionen auf angemeldeten Geräten sind noch zu prüfen.

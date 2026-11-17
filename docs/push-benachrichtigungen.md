@@ -24,6 +24,8 @@ Eine vorhandene Browser-Subscription wird beim App-Start ohne erneute Berechtigu
 
 Die Prüfung erfolgt jede Minute; Cloudflare kann neue Cron-Einstellungen verzögert übernehmen. Das garantiert keinen Versand exakt auf die Sekunde. Wiederholungen werden serverseitig verhindert, fehlgeschlagene Zustellungen nach 15 Minuten erneut versucht. Wie bei verteilten Push-Systemen ist bei einem Absturz unmittelbar nach Annahme durch den Push-Dienst eine seltene Doppelzustellung möglich. Ungültig gewordene Geräte werden bei HTTP 404/410 entfernt. Benachrichtigungstitel und Aufgabenname können auf dem Sperrbildschirm sichtbar sein.
 
+Android erhält für die Statusleiste ein transparentes, einfarbiges Nuzzle-Symbol. Die aufgeklappte Benachrichtigung nutzt das violette App-Icon. Darstellung und Aktualisierung hängen vom Browser und Betriebssystem ab.
+
 ## Prüfung
 
 `node --experimental-strip-types --test lib/push.test.mjs` prüft die API mit einer temporären SQLite-Datenbank, Zuständigkeit, Terminphasen, Deaktivierung, Schutz gegen beliebige Versandziele, Fehlerversuche und den verschlüsselten Push-Aufbau. Diese Tests ersetzen keine tatsächliche Zustellprüfung auf euren Geräten.

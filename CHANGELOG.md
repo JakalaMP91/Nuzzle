@@ -1,5 +1,9 @@
 # Änderungen
 
+## 0.8.1
+
+- Benachrichtigungen verwenden das Nuzzle-Logo als Android-Statusleistensymbol und das violette App-Icon in der Benachrichtigung.
+
 ## 0.8.0
 
 - Nest Violett als Standard, vollflächiges PWA-Icon und Startbildschirm sowie das zusätzliche Farbschema Nuzzle Koralle.
